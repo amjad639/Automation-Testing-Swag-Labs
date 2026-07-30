@@ -15,8 +15,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void VerifyValidLogin() throws IOException {
-        LoginPage loginPage = new LoginPage(driver);
-        //TC steps
+        LoginPage loginPage = new LoginPage(getDriver());        //TC steps
         JsonNode data = DataDriven.jsonReader();
 
         loginPage.EnterUserName(
@@ -33,14 +32,13 @@ public class LoginTest extends BaseTest {
 
         //assertion
         Assert.assertEquals(
-                driver.getCurrentUrl(),
+                getDriver().getCurrentUrl(),
                 "https://www.saucedemo.com/inventory.html");
     }
     @Test
     public void VerifyInvalidLogin() throws IOException {
 
-        LoginPage loginPage = new LoginPage(driver);
-
+        LoginPage loginPage = new LoginPage(getDriver());
         //TC steps
         JsonNode data = DataDriven.jsonReader();
         loginPage.EnterUserName(
@@ -63,8 +61,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void VerifyLoginWithoudPassword() throws IOException {
 
-        LoginPage loginPage = new LoginPage(driver);
-
+        LoginPage loginPage = new LoginPage(getDriver());
         //tc steps
         JsonNode data = DataDriven.jsonReader();
         loginPage.EnterUserName(

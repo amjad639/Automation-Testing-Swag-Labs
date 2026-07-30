@@ -10,14 +10,14 @@ public class InventoryTest extends BaseTest {
 
     @Test
     public void VerifyInventoryElementsAfterLogin(){
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(getDriver());        //TC steps
         //login
         loginPage.EnterUserName("standard_user");
         loginPage.EnterPassword("secret_sauce");
         loginPage.ClickLoginButton();
 
         //inventory page
-        InventoryPage inventoryPage = new InventoryPage(driver);
+        InventoryPage inventoryPage = new InventoryPage(getDriver());
 
         //assertion the page title
         Assert.assertEquals(inventoryPage.getPageTitle(),"Swag Labs","Swag Labs");

@@ -2,22 +2,30 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.*;
 
 public class BaseTest {
-    public WebDriver driver;
+    protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
+    public WebDriver getDriver(){
+
+        return driver.get();
+
+    }
     @BeforeMethod
     public void SetUpDriver() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.saucedemo.com/");
+        driver.set(new ChromeDriver());
+        getDriver().manage().window().maximize();
+        getDriver().get("https://www.saucedemo.com/");
     }
 
     @AfterMethod
     public void CloseDriver() {
-        driver.quit();
+        getDriver().quit();
+        driver.remove();
     }
 }
