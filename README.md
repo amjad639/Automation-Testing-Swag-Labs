@@ -20,6 +20,7 @@ The main purpose of this project is to automate login scenarios and verify inven
 - Allure Reporting
 - JSON Data Driven Testing
 - WebDriverWait (Explicit Wait)
+- Parallel Execution
 
 ---
 
