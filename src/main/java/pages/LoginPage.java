@@ -33,7 +33,7 @@ public class LoginPage {
 
     public void EnterPassword(String pass){
         wait.until(
-                ExpectedConditions.visibilityOf(driver.findElement(username))
+                ExpectedConditions.visibilityOf(driver.findElement(password))
         );
         Allure.step("Enter password");
         driver.findElement(password).sendKeys(pass);
@@ -50,6 +50,12 @@ public class LoginPage {
     }
     public String ErrorMessagePasswordRequired(){
         return driver.findElement(errorMessage).getText();
+    }
+
+    public void ValidLogin(String username, String password){
+        EnterUserName(username);
+        EnterPassword(password);
+        ClickLoginButton();
     }
 
 }
